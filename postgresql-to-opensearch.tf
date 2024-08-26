@@ -27,12 +27,12 @@ locals {
 
 resource "yandex_vpc_network" "network" {
   description = "Network for Managed Service for PostgreSQL"
-  name        = "network"
+  name        = local.network_name
 }
 
 resource "yandex_vpc_subnet" "subnet-a" {
   description    = "Subnet ru-central1-a availability zone for PostgreSQL"
-  name           = "subnet-a"
+  name           = local.subnet_name
   zone           = "ru-central1-a"
   network_id     = yandex_vpc_network.network.id
   v4_cidr_blocks = ["10.129.0.0/24"]

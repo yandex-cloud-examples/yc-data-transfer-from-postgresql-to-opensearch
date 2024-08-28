@@ -1,5 +1,3 @@
-# Название сценария
+# Поставка данных из Yandex Managed Service for PostgreSQL в Managed Service for OpenSearch с помощью Yandex Data Transfer
 
-Описание сценария и инструкция по его применению.
-
-Для практических руководств обязательна ссылка на документацию.
+С помощью сервиса [Data Transfer](https://yandex.cloud/ru/docs/data-transfer) можно перенести данные из кластера [Yandex Managed Service for PostgreSQL](https://yandex.cloud/ru/docs/managed-postgresql) в кластер [Yandex Managed Service for OpenSearch](https://yandex.cloud/en/services/managed-opensearch). Настройка через Terraform описана в [практическом руководстве](https://cloud.yandex.ru/ru/docs/data-transfer/tutorials/postgresql-to-opensearch). Необходимый для настройки конфигурационный файл [postgresql-to-opensearch.tf](https://github.com/yandex-cloud-examples/yc-data-transfer-from-postgresql-to-opensearch/blob/main/postgresql-to-opensearch.tf) расположен в этом репозитории.

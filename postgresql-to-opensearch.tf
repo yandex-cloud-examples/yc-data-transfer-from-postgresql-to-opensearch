@@ -16,6 +16,9 @@ locals {
   target_endpoint_id = "" # Set the target endpoint ID
   transfer_enabled   = 0  # Set to 1 to create transfer
 
+  # Setting for the YC CLI that allows running CLI command to activate the transfer
+  profile_name = "" # Name of the YC CLI profile
+
   # The following settings are predefined. Change them only if necessary.
   network_name        = "network"                           # Name of the network
   subnet_name         = "subnet-a"                          # Name of the subnet
@@ -189,4 +192,8 @@ resource "yandex_datatransfer_transfer" "postgresql-to-opensearch-transfer" {
   target_id   = local.target_endpoint_id
   source_id   = yandex_datatransfer_endpoint.mpg-source.id
   type        = "SNAPSHOT_ONLY" # Copy data from the source PostgreSQL database
+
+  provisioner "local-exec" {
+    command = "yc --profile ${local.profile_name} datatransfer transfer activate ${yandex_datatransfer_transfer.postgresql-to-opensearch-transfer[count.index].id}"
+  }
 }
